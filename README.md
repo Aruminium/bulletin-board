@@ -7,13 +7,13 @@ If not installed, see [Taskfile.yaml](./Taskfile.yaml) for completion
 ### 1. Container launch
 
 ```bash
-$ task up
+task up
 ```
 
 ### 2. Enter the container
 
 ```bash
-$ task exec -- app
+task exec -- app
 ```
 
 ### 3. Run the application
@@ -21,5 +21,5 @@ $ task exec -- app
 Server launches on http://localhost:8080
 
 ```bash
-$ gradle bootRun
+gradle bootRun
 ```
