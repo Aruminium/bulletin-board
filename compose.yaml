@@ -1,0 +1,28 @@
+volumes:
+  db-data:
+
+services:
+  db:
+    build:
+      context: .
+      dockerfile: ./docker/db/Dockerfile
+    env_file:
+      - .env.development
+    ports:
+      - "3306:3306"
+    volumes:
+      - db-data:/var/lib/mysql
+
+  app:
+    container_name: app
+    build:
+      context: .
+      dockerfile: ./docker/app/Dockerfile
+    env_file:
+      - .env.development
+    tty: true
+    ports:
+      - "8080:8080"
+    working_dir: /var/www/
+    volumes:
+      - ./app:/var/www/

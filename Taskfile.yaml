@@ -1,0 +1,24 @@
+version: "3"
+
+tasks:
+  up:
+    cmds:
+      - docker compose up -d
+    desc: Start the application
+    silent: true
+  build:
+    cmds:
+      - docker compose build {{ .CLI_ARGS }}
+    desc: Build the application
+    silent: true
+  down:
+    cmds:
+      - docker compose down
+    desc: Stop the application
+    silent: true
+  exec:
+    cmds:
+      - docker compose exec -it {{ .CLI_ARGS }}
+      - echo "executed"
+    desc: Execute a command in a running container
+    silent: true
