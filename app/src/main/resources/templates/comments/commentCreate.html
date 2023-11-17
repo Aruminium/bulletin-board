@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="ja">
+<div th:fragment="main">
+    <h1 class="text-5xl font-bold mb-6">[[ ${title} ]]</h1>
+    <form method="post" th:action="@{ /comments/create }" th:object="${commentCreateForm}">
+        <div class="flex flex-col gap-4 mb-3">
+            <div th:each="error : ${#fields.detailedErrors()}">
+                <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative w-1/2"
+                     role="alert">
+                    <strong class="block sm:inline" th:text="${error.message}"></strong>
+                </div>
+            </div>
+        </div>
+        <div class="mb-3 w-1/2">
+            <label class="block text-gray-500 font-bold" for="name">
+                名前
+            </label>
+            <input class="w-full bg-gray-200 appearance-none border-2 border-gray-200 rounded text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500 px-3 py-1"
+                   id="name" type="text" th:field="*{name}">
+        </div>
+        <div class="mb-3 w-1/2">
+            <label class="block text-gray-500 font-bold" for="content">
+                本文
+            </label>
+            <input class="w-full bg-gray-200 appearance-none border-2 border-gray-200 rounded -gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500 px-3 py-1"
+                   id="content" type="text" th:field="*{content}">
+        </div>
+        <button class="shadow bg-purple-500 hover:bg-purple-400 focus:shadow-outline focus:outline-none text-white font-boldrounded px-3 py-1 rounded"
+                type="submit">
+            投稿
+        </button>
+    </form>
+</div>
+</html>

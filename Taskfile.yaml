@@ -5,20 +5,24 @@ tasks:
     cmds:
       - docker compose up -d
     desc: Start the application
+    dir: "{{ .TASKFILE_DIR }}"
     silent: true
   build:
     cmds:
       - docker compose build {{ .CLI_ARGS }}
     desc: Build the application
+    dir: "{{ .TASKFILE_DIR }}"
     silent: true
   down:
     cmds:
-      - docker compose down
+      - docker compose down {{ .CLI_ARGS }}
     desc: Stop the application
+    dir: "{{ .TASKFILE_DIR }}"
     silent: true
   exec:
     cmds:
       - docker compose exec -it {{ .CLI_ARGS }}
       - echo "executed"
     desc: Execute a command in a running container
+    dir: "{{ .TASKFILE_DIR }}"
     silent: true

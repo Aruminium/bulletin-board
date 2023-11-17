@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="ja">
+<head>
+    <meta charset="utf-8">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>[[ ${title} ]]</title>
+</head>
+<body>
+<div class="grid grid-cols-12 gap-4">
+    <main id="main" th:insert="__${main}__" class="col-start-2 col-end-12 py-3"></main>
+</div>
+</body>
+</html>

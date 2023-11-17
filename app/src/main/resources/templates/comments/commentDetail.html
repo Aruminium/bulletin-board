@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="ja">
+<div th:fragment="main">
+    <h1 class="text-5xl font-bold mb-6">[[ ${title} ]]</h1>
+    <div class="flex flex-col gap-2 justify-items-center mb-3">
+        <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900">投稿日時: [[
+            ${#temporals.format(comment.createdAt, 'yyyy年MM月dd日 HH:mm')} ]]</h5>
+        <p class="mb-2 text-2xl font-bold tracking-tight text-gray-900">名前: [[ ${comment.name} ]]</p>
+        <p class="mb-2 text-2xl font-bold tracking-tight text-gray-900">本文: [[ ${comment.content} ]]</p>
+    </div>
+    <div class="flex flex-row gap-4">
+        <a th:href="@{/comments/update/__${comment.id}__}"
+           class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">編集</a>
+        <form method="post" th:action="@{ /comments/delete/__${comment.id}__ }">
+            <button type="submit" class="bg-red-500 font-medium hover:bg-red-700 text-white font-bold py-2 px-4 rounded-lg">削除
+            </button>
+        </form>
+    </div>
+</div>
+</html>

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="ja">
+<div th:fragment="main">
+    <h1 class="text-5xl font-bold mb-6">[[ ${title} ]]</h1>
+    <div class="mb-3">
+        <a href="comments/create"
+           class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">新規投稿</a>
+    </div>
+    <div class="flex flex-col gap-4 justify-items-center">
+        <div th:each="comment : ${comments}">
+            <p class="text-gray-400/50" th:text="${#temporals.format(comment.createdAt, 'yyyy年MM月dd日 HH:mm')}"></p>
+            <a th:href="@{/comments/detail/__${comment.id}__}"
+               class="block max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow-md hover:bg-gray-100">
+                <div class="grid grid-cols-1 divide-y-2 divide-slate-400/25">
+                    <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900" th:text="${comment.name}"></h5>
+                    <p class="font-normal text-gray-700" th:text="${comment.content}"></p>
+                </div>
+            </a>
+        </div>
+    </div>
+</div>
+</html>
